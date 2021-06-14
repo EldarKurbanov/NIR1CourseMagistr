@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
-\usepackage{makecell}
+\usepackage{makecell,array}
 \usepackage{url}
 \usepackage{breakurl}
 \usepackage[breaklinks]{hyperref}
@@ -72,10 +72,12 @@
 
 	\vfill
 	
-	\begin{tabular}{R{3cm}cc}
+	\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+	
+	\begin{tabular}{ C{3cm}C{8cm}c }
 			Студент & Курбанов Э.Р &  \superunderlinec{\thead{\normalfont{}}}{1.9cm}{(дата, подпись)}
 			\vspace{0.6cm} \\
-			Специальность \phantom{fake text} & \multicolumn{2}{c}{\thead{\normalfont{Математическое обеспечение} \\ \normalfont{и администрирование} \\ \normalfont{информационных систем}}}  \\
+			\noindent\parbox[c]{\hsize}{Специальноость} & \multicolumn{2}{M{10cm}}{\thead{\normalfont{Математическое обеспечение} \\ \normalfont{и администрирование} \\ \normalfont{информационных систем}}}  \\
 			Группа & МОСм-201 & \\
 			Научный руководитель & \thead{д.ф.-м.н., зав. каф. КНЭМ \\ В.А.Клячин} &  \superunderlinec{\thead{\normalfont{}}}{1.9cm}{(дата, подпись)} \\
 			Нормоконтролер & \underline{\hspace{3cm}} & \superunderlinec{\thead{\normalfont{}}}{1.9cm}{(дата, подпись)}
