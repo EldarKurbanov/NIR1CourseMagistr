@@ -1,6 +1,6 @@
 % !TeX spellcheck = ru_RU
 %% -*- coding: utf-8 -*-
-\documentclass[12pt,a4paper]{scrartcl} 
+\documentclass[14pt,a4paper]{scrartcl} 
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{indentfirst}
@@ -8,72 +8,82 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
+\usepackage{makecell}
 \usepackage{url}
 \usepackage{breakurl}
 \usepackage[breaklinks]{hyperref}
 \usepackage{minted}
 \usepackage{textcomp}
 \usepackage{comment}
+\usepackage{tabularx,booktabs} 
+\usepackage{multirow}
+
 \graphicspath{{images/}}
+
+% "Прокаченные" типы колонок для LaTeX. Умеют выравнивать содержимое столбца по горизонтали и принимать фиксированный размер. Полезная вещь.
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Выравнивание по левому краю.
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Выравнивание по середине.
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}} % Выравнивание по правому краю.
+
+
+% Тоже самое, но ещё с отступом слева от текста (выравнивание по середине)
+\newcommand\superunderlinec[3]{$\underset{\text{#3}}{\text{\underline{\hspace{#2}#1\hspace{#2}}}}$}
+
+%Настройки для того, чтобы была возможность переносить строки внутри таблиц. Подробнее здесь:  https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\normalfont}
+\renewcommand\theadgape{\Gape[0pt]}
+\renewcommand\cellgape{\Gape[0pt]}
 
 \begin{document}
 \begin{titlepage}
 	\begin{center}
-	    \large
-	    	ФЕДЕРАЛЬНОЕ АГЕНТСТВО ПО ОБРАЗОВАНИЮ РФ
-	    \vspace{0.5cm}
-	    
-	    Государственное образовательное учреждение \\
-	    Высшего профессионального образования \\
-	    «Волгоградский государственный университет»
+	    Федеральное государственное автономное \\ 
+	    образовательное учреждение высшего образования \\
+	    «Волгоградский государственный университет» \\
 	    
 	    \vspace{0.5cm}
 	    
-	    Институт математики и информационных технологий
+	    институт Математики и информационных технологий
 	    
-	    Кафедра компьютерных наук и экспериментальной математики
-	    \vspace{2.5cm}
+	    кафедра Компьютерных наук и экспериментальной математики
+	    \vspace{1.5cm}
+	    
+	    \newlength{\MLL}
+		\settowidth{\MLL}{«\underline{\hspace{2.5cm}}» \underline{\hspace{2cm}}}
 	
-	    \textsc{КУРСОВАЯ РАБОТА}\\
+		\hfill\begin{minipage}{0.4\textwidth}
+	 		Допустить работу к защите \\
+	 		Зав. каф. КНЭМ \\
+	 	 	\underline{\hspace{3.5cm}}В.А.Клячин \\
+	  		<<\underline{\hspace{1cm}}>>\underline{\hspace{3.0cm}} 2021 г. 
+		\end{minipage}
+		
+	    \vspace{1.5cm}	
+	
+	    Курбанов Эльдар Ровшанович
 	    
 	    \begin{spacing}{1.3}
-	    	<<Распознавание лиц на встраиваемых системах>>
+    	    	\textbf{Система управления и формирования поведенческой стратегии автономного мобильного робота}
 	    \end{spacing}
+	    
+	    Отчёт о научно-исследовательской работе
 	\end{center}
 
 	\vfill
 	
-	\newlength{\ML}
-	\settowidth{\ML}{«\underline{\hspace{2.5cm}}» \underline{\hspace{2cm}}}
-	
-	\hfill\begin{minipage}{0.4\textwidth}
-	  Выполнил студент:\\
-	  Курбанов\\
-	  Эльдар \\
-	  Ровшанович\\
-	  \underline{\hspace{\ML}} 
-	\end{minipage}
-	
-	\bigskip
-	
-	\hfill\begin{minipage}{0.4\textwidth}
-	  Научный руководитель:\\
-	  Клячин\\ 
-	  Владимир\\ 
-	  Александрович\\
-	  \underline{\hspace{\ML}}
-	\end{minipage}
-	
-	\bigskip
-	
-	\hfill\begin{minipage}{0.4\textwidth}
-		Научный консультант:\\
-		Гордеев\\
-		Алексей \\
-		Юрьевич\\
-		\underline{\hspace{\ML}} \\[2mm]
-		«\underline{\hspace{0.7cm}}» \underline{\hspace{2.5cm}} 2019 г.
-	\end{minipage}
+	\begin{tabular}{R{3cm}cc}
+			Студент & Курбанов Э.Р &  \superunderlinec{\thead{\normalfont{}}}{1.9cm}{(дата, подпись)}
+			\vspace{0.6cm} \\
+			Специальность & \thead{\normalfont{Математическое обеспечение} \\ \normalfont{и администрирование} \\ \normalfont{информационных систем}} &  \\
+			Ответственный за организацию практики от кафедры
+ & \superunderlinec{\thead{\normalfont{\phantom{fake text for align}}\\\normalfont{Клячин В.А.}}}{1.1cm}{(ФИО)} & \superunderlinec{\thead{\normalfont{зав. кафедрой КНЭМ,}\\\normalfont{профессор, д.ф.-м.н.}}}{0.7cm}{(должность, ученое звание и степень)} \\
+			%ragedleft?????? seriously, it works as right align. WTF????
+			\multirow{3}{3cm}{\raggedleft Место прохождения практики} & \multicolumn{2}{c}{\underline{\hspace{0.3cm}ВолГУ, кафедра КНЭМ\hspace{6.7cm}}} \\
+			& \multicolumn{2}{c}{\underline{\hspace{11.55cm}}} \\
+			& \multicolumn{2}{c}{\underline{\hspace{11.55cm}}} \\
+			Сроки прохождения практики & \multicolumn{2}{c}{с <<10>> февраля 2020 г. по <<22>> февраля 2020 г.}
+		\end{tabular}
 	
 	\vfill
 	
